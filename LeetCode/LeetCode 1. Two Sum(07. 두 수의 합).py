@@ -1,6 +1,8 @@
 from dataclasses import dataclass
 from typing import List
 
+D = {}
+
 
 # Q. 덧셈하여 타겟을 만들 수 있는 배열의 두 숫자 인덱스를 리턴하라.
 
@@ -8,14 +10,10 @@ from typing import List
 class Solution:
     # 풀이4: 조회 구조 개선
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        print(f'nums: {nums}')
-        nums_map = {}
+        nums_map = D
 
         # 하나의 for문으로 통합
         for i, num in enumerate(nums):
-            print(f'nums_map: {nums_map}')
-            print(f'i : {i}, num : {num}, target: {target}')
-            print(f'target - num: {target - num}')
             if target - num in nums_map:
                 return [nums_map[target - num], i]
             nums_map[num] = i

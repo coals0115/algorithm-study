@@ -9,6 +9,24 @@ class ListNode:
 
 
 class Solution:
+    def oddEvenList_240131(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        # 0. 예외처리
+
+        # 1. 홀수(odd)와 짝수(even)노드를 각각 이어 만들어서
+        odd = head
+        even = even_head = head.next
+
+        while even and even.next:
+            # 1-1. 홀수, 짝수
+            odd.next, even.next = odd.next.next, even.next.next
+            # 1-2. 다음 loop를 위해 값 세팅
+            odd, even = odd.next, even.next
+
+        # 2. 홀수의 마지막 노드와 짝수의 첫 노드 이어주기
+        odd.next = even_head
+
+        return head
+
     def oddEvenList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         # 0. 예외처리
         if head is None:
